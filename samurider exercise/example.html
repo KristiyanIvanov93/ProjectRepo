@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Samurider</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <!-- Navigation -->
+        <a id="logo" href="/"
+          ><img id="logo-img" src="./images/logo.png" alt=""
+        /></a>
+
+        <nav>
+          <div>
+            <a href="#">Motorcycles</a>
+            <a href="#">Search</a>
+          </div>
+
+          <!-- Logged-in users -->
+          <div class="user">
+            <a href="#">Add Motorcycle</a>
+            <a href="#">Logout</a>
+          </div>
+
+          <!-- Guest users -->
+          <div class="guest">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+            
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Home page -->
+
+
+        <!-- Dashboard page -->
+
+         <!-- Display an h2 if there are no posts -->
+        
+
+        <!-- Register Page (Only for Guest users) -->
+
+
+        <!-- Login Page (Only for Guest users) -->
+
+
+        <!-- Create Page (Only for logged-in users) -->
+
+        <!-- Edit Page (Only for logged-in users) -->
+        <section id="edit">
+            <h2>Edit Motorcycle</h2>
+            <div class="form">
+              <h2>Edit Motorcycle</h2>
+              <form class="edit-form">
+                <input
+                  type="text"
+                  name="model"
+                  id="model"
+                  placeholder="Model"
+                />
+                <input
+                  type="text"
+                  name="imageUrl"
+                  id="moto-image"
+                  placeholder="Moto Image"
+                />
+                <input
+                type="number"
+                name="year"
+                id="year"
+                placeholder="Year"
+              />
+              <input
+              type="number"
+              name="mileage"
+              id="mileage"
+              placeholder="mileage"
+            />
+            <input
+              type="number"
+              name="contact"
+              id="contact"
+              placeholder="contact"
+            />
+              <textarea
+                id="about"
+                name="about"
+                placeholder="about"
+                rows="10"
+                cols="50"
+              ></textarea>
+                <button type="submit">Edit Motorcycle</button>
+              </form>
+          </div>
+        </section>
+        
+        <!-- Details page -->
+        
+
+       <!-- Search page -->
+       <section id="search">
+
+        <div class="form">
+          <h4>Search</h4>
+          <form class="search-form">
+            <input
+              type="text"
+              name="search"
+              id="search-input"
+            />
+            <button class="button-list">Search</button>
+          </form>
+        </div>
+        <h4 id="result-heading">Results:</h4>
+          <div class="search-result">
+         <h2 class="no-avaliable">No result.</h2>
+          <!--If there are matches display a div with information about every motorcycle-->
+         <div class="motorcycle">
+          <img src="./images/Honda Hornet.png" alt="example1" />
+          <h3 class="model">Honda Hornet</h3>
+            <a class="details-btn" href="">More Info</a>
+        </div>
+          </div>
+                </section>
+      </main>
+    </div>
+  </body>
+</html>
