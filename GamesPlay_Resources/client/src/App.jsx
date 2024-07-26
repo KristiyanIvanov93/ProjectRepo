@@ -1,12 +1,17 @@
-import { useState } from 'react';
-
+import Header from './components/header/Header';
+import Login from './components/login/Login';
 
 function App() {
 
     return (
-        <>
-<h1>Working</h1>
-        </>
+        <div id="box">
+            <Header></Header>
+            <main id="main-content">
+
+            </main>
+
+            <h1>Working</h1>
+        </div>
     );
 }
 
