@@ -1,39 +1,27 @@
-
+import { useEffect, useState } from 'react';
+import { getAll } from '../../api/gamesAPI'; 
+import GameCatalogItem from '../game-catalog/game-catalog-item/GameCatalogItem';
 
 export default function GameCatalog() {
+    const [games, setGames] = useState([]);
 
-
+    useEffect(() => {
+        (async () => {
+            try {
+                const result = await getAll(); 
+                setGames(result);
+            } catch (error) {
+                console.error('Error fetching games:', error);
+            }
+        })();
+    }, []);
 
     return (
         <section id="catalog-page">
             <h1>All Games</h1>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="./images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>Cover Fire</h2>
-                    <a href="#" className="details-button">Details</a>
-                </div>
-
-            </div>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="./images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>Zombie lang</h2>
-                    <a href="#" className="details-button">Details</a>
-                </div>
-
-            </div>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="./images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>MineCraft</h2>
-                    <a href="#" className="details-button">Details</a>
-                </div>
-            </div>
-
+            {games.map(game => (
+                <GameCatalogItem key={game._id} {...game} />
+            ))}
             <h3 className="no-articles">No articles yet</h3>
         </section>
 

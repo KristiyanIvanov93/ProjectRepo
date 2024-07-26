@@ -1,0 +1,26 @@
+{
+    "95f60e68-fc0d-466b-87c4-9de75bed8ca5": {
+        "title": "MineCraft",
+        "category": "Action, Crime, Fantasy",
+        "maxLevel": "4",
+        "imageUrl": "MineCraft.png",
+        "summary": "Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill htmlFor. Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill htmlFor.",
+        "_id": "95f60e68-fc0d-466b-87c4-9de75bed8ca5"
+    },
+    "13a53bd3-0448-43d9-9c86-4003fc309276": {
+        "title": "Diablo",
+        "category": "Action, Dark",
+        "maxLevel": "100",
+        "imageUrl": "https://cdn.vox-cdn.com/thumbor/ZNAcBrus6_tSXHQc5Vbo51zbAg0=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22876306/Diablo_LordOfTerror_2D_Desktop.jpg",
+        "summary": "Diablo II is an action RPG where players battle through dark fantasy realms, facing demonic hordes and powerful bosses. With deep lore, character customization, and cooperative gameplay, it remains a classic in the genre.",
+        "_id": "13a53bd3-0448-43d9-9c86-4003fc309276"
+    },
+    "d0874cd7-8805-48f0-a61f-fcec285debdf": {
+        "title": "World of Warcraft",
+        "category": "MMORPG, Fantasy",
+        "maxLevel": "60 (latest expansion)",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/77/World_of_Warcraft.png",
+        "summary": "World of Warcraft is a massively multiplayer online role-playing game set in the expansive fantasy world of Azeroth. Players create characters, embark on epic quests, engage in player-vs-player combat, and join guilds in a persistent online universe.",
+        "_id": "d0874cd7-8805-48f0-a61f-fcec285debdf"
+    }
+}
