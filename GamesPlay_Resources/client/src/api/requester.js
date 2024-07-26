@@ -14,12 +14,23 @@ async function requester(method, url, data) {
 
     try {
         const response = await fetch(url, options);
-        const result = await response.json();
 
+        // Check if response status indicates an error
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Check if response is empty
+        if (response.status === 204) { // No Content
+            return null;
+        }
+
+        // Handle JSON response
+        const result = await response.json();
         return result;
     } catch (error) {
         console.error('Error making request:', error);
-        throw error;
+        throw error; // Re-throw error to allow further handling if needed
     }
 }
 
