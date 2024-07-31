@@ -29,7 +29,7 @@ export default function GameDetails() {
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            const newComment = await commentsAPI.create(gameId, username, comment); // Ensure to await here
+            const newComment = await commentsAPI.create(gameId, username, comment); 
             setComments(prevComments => [...prevComments, newComment]);
             setUsername('');
             setComment('');

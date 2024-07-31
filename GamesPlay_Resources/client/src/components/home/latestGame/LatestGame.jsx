@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export default function LatestGame({
     _id,
     title,
-    category,
     imageUrl,
 }) {
     return (
