@@ -3,6 +3,7 @@ import { getAll } from "../../api/gamesAPI";
 import LatestGame from "./latestGame/LatestGame";
 
 export default function Home() {
+    
     const [latestGames, setLatestGames] = useState([]);
 
     useEffect(() => {

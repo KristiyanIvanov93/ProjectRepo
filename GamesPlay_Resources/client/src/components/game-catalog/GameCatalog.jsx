@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
 
-
-import { getAll } from '../../api/gamesAPI';
-
+import { useGetAllGames } from '../../hooks/useGames';
 
 import GameCatalogItem from '../game-catalog/game-catalog-item/GameCatalogItem';
 
 export default function GameCatalog() {
-    const [games, setGames] = useState([]);
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const result = await getAll();
-                setGames(result);
-            } catch (error) {
-                console.error('Error fetching games:', error);
-            }
-        })();
-    }, []);
+    const [games] = useGetAllGames();
 
-    return (
+    return ( 
         <section id="catalog-page">
             <h1>All Games</h1>
             {games.length > 0
@@ -32,3 +19,5 @@ export default function GameCatalog() {
 
     );
 }
+
+
