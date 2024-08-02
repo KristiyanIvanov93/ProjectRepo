@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 
-
 import Header from './components/header/Header';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
@@ -11,16 +10,11 @@ import GameDetails from './components/game-details/GameDetails';
 import { AuthContextProvider } from './api/contexts/authContext';
 import Logout from './components/logout/Logout';
 
-
-
-
 function App() {
-
     return (
-        <AuthContextProvider >
-
+        <AuthContextProvider>
             <div id="box">
-                <Header></Header>
+                <Header />
 
                 <main id="main-content">
                     <Routes>
@@ -31,11 +25,8 @@ function App() {
                         <Route path='/games' element={<GameCatalog />} />
                         <Route path='/games/create' element={<GameCreate />} />
                         <Route path='/games/:gameId/details' element={<GameDetails />} />
-
-
                     </Routes>
                 </main>
-
             </div>
         </AuthContextProvider>
     );

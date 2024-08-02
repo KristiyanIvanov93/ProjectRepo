@@ -1,15 +1,15 @@
-/* eslint-disable no-unused-vars */
 import { post, get } from "./requester";
 
-const baseUrl = 'http://localhost:3030/jsonstore/games';
-const buildUrl = (gameId) => `${baseUrl}/${gameId}/comments`;
+const baseUrl = 'http://localhost:3030/data/comments';
 
-const create = async (gameId, username, text) => post(buildUrl(gameId), { username, text });
+const create = async ( gameId, text) => post(baseUrl, { gameId, text });
 
-const getAll = async (gameId,) => {
-    const result = await get(buildUrl(gameId));
-    const comments = Object.values(result);
-    return comments;
+const getAll = async (gameId) => {
+    const params = new URLSearchParams({
+        where: `gameId="${gameId}"`
+    });
+    const url = `${baseUrl}?${params.toString()}`;
+    return get(url);
 };
 
 

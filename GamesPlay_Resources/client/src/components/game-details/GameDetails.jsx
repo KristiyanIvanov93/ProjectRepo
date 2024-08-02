@@ -1,30 +1,32 @@
-import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import commentsAPI from "../../api/commentsAPI";
-import { useGetOneGames } from "../../hooks/useGames";
+import { useGetOneGames } from '../../hooks/useGames';
+import { useForm } from '../../hooks/useForm';
+import { useCreateComment, useGetAllComments } from '../../hooks/useComments';
+import { useAuthContext } from '../../api/contexts/authContext';
+
+
+const initialValues = {
+    comment: ''
+};
 
 export default function GameDetails() {
     const { gameId } = useParams();
-    const [comments, setComments] = useState([]);
-    const [username, setUsername] = useState('');
-    const [comment, setComment] = useState('');
-    const [game, setGame] = useGetOneGames(gameId);
+    const [comments, setComments] = useGetAllComments(gameId);
+    const createComment = useCreateComment();
+    const [game] = useGetOneGames(gameId);
+    const { isAuthenticated } = useAuthContext();
 
-    
 
-    const commentSubmitHandler = async (e) => {
-        e.preventDefault();
-        const commentsResult = await commentsAPI.getAll(gameId);
-        setComments(commentsResult);
-        try {
-            const newComment = await commentsAPI.create(gameId, username, comment); 
-            setComments(prevComments => [...prevComments, newComment]);
-            setUsername('');
-            setComment('');
-        } catch (error) {
-            console.error('Error adding comment:', error);
-        }
-    };
+    const { changeHandler,
+        submitHandler,
+        values
+    } = useForm(initialValues, ({ comment }) => {
+        createComment(gameId, comment);
+    });
+
+
+
+
 
     return (
         <section id="game-details">
@@ -43,7 +45,7 @@ export default function GameDetails() {
                         {comments.length > 0 ? (
                             comments.map(comment => (
                                 <li className="comment" key={comment._id}>
-                                    <p>{comment.username}: {comment.text}</p>
+                                    <p>Username:: {comment.text}</p>
                                 </li>
                             ))
                         ) : (
@@ -56,29 +58,25 @@ export default function GameDetails() {
                     <a href="#" className="button">Delete</a>
                 </div>
             </div>
-            <article className="create-comment">
-                <label>Add new comment:</label>
-                <form className="form" onSubmit={commentSubmitHandler}>
-                    <input
-                        type="text"
-                        placeholder="Pesho"
-                        name="username"
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
-                    />
-                    <textarea
-                        name="comment"
-                        placeholder="Comment......"
-                        onChange={(e) => setComment(e.target.value)}
-                        value={comment}
-                    ></textarea>
-                    <input
-                        className="btn submit"
-                        type="submit"
-                        value="Add Comment"
-                    />
-                </form>
-            </article>
+            {isAuthenticated && (
+                <article className="create-comment">
+                    <label>Add new comment:</label>
+                    <form className="form" onSubmit={submitHandler}>
+
+                        <textarea
+                            name="comment"
+                            placeholder="Comment......"
+                            onChange={changeHandler}
+                            value={values.comment}
+                        ></textarea>
+                        <input
+                            className="btn submit"
+                            type="submit"
+                            value="Add Comment"
+                        />
+                    </form>
+                </article>
+            )}
         </section>
     );
 }

@@ -1,3 +1,5 @@
+import { getAcessToken } from "../utils/authUtils";
+
 async function requester(method, url, data) {
     const options = {
         method,
@@ -6,7 +8,7 @@ async function requester(method, url, data) {
         },
     };
 
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = getAcessToken();
 
     // Do not add authorization header for login and registration endpoints
     if (accessToken && !url.endsWith('/login') && !url.endsWith('/register')) {

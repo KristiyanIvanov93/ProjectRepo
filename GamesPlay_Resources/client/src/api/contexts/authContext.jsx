@@ -10,12 +10,12 @@ export const AuthContext = createContext({
     logout: () => null
 });
 
-export function AuthContextProvider({ children }) {
+export function AuthContextProvider(props) {
+   
 
     const [authState, setAuthState] = usePersistedState('auth', {});
 
     const changeAuthState = (state) => {
-        localStorage.setItem('accessToken', state.accessToken);
         setAuthState(state);
     };
 
@@ -34,7 +34,7 @@ export function AuthContextProvider({ children }) {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {children}
+            {props.children}
         </AuthContext.Provider>
     );
 }
