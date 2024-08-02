@@ -26,7 +26,7 @@ async function requester(method, url, data) {
         }
 
         if (response.status === 204) {
-            return null; // No content
+            return null; 
         }
 
         return await response.json();

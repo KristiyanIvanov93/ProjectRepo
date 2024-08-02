@@ -9,6 +9,8 @@ import GameCatalog from './components/game-catalog/GameCatalog';
 import GameCreate from './components/game-create/GameCreate';
 import GameDetails from './components/game-details/GameDetails';
 import { AuthContextProvider } from './api/contexts/authContext';
+import Logout from './components/logout/Logout';
+
 
 
 
@@ -25,6 +27,7 @@ function App() {
                         <Route path='/' element={<Home />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/login' element={<Login />} />
+                        <Route path='/logout' element={<Logout />} />
                         <Route path='/games' element={<GameCatalog />} />
                         <Route path='/games/create' element={<GameCreate />} />
                         <Route path='/games/:gameId/details' element={<GameDetails />} />

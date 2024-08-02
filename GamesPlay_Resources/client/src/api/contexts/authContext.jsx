@@ -1,15 +1,16 @@
-import { createContext, useContext,  } from "react";
+import { createContext, useContext, } from "react";
 import usePersistedState from "../../hooks/usePersistedState";
 
 export const AuthContext = createContext({
     userId: '',
     email: '',
-    accessToken: '', 
+    accessToken: '',
     isAuthenticated: false,
     changeAuthState: (authState = {}) => null,
+    logout: () => null
 });
 
-export function AuthContextProvider({ children }) { 
+export function AuthContextProvider({ children }) {
 
     const [authState, setAuthState] = usePersistedState('auth', {});
 
@@ -18,23 +19,28 @@ export function AuthContextProvider({ children }) {
         setAuthState(state);
     };
 
+    const logout = () => {
+        setAuthState(null);
+    };
+
     const contextData = {
-        userId: authState._id,
-        email: authState.email,
-        accessToken: authState.accessToken, 
-        isAuthenticated: !!authState.email,
+        userId: authState?._id,
+        email: authState?.email,
+        accessToken: authState?.accessToken,
+        isAuthenticated: !!authState?.email,
         changeAuthState,
+        logout
     };
 
     return (
         <AuthContext.Provider value={contextData}>
-            {children} 
+            {children}
         </AuthContext.Provider>
     );
 }
 
 
-export function useAuthContext(){
+export function useAuthContext() {
     const authData = useContext(AuthContext);
     return authData;
 }

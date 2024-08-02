@@ -1,4 +1,4 @@
-import { post } from './requester';
+import { get, post } from './requester';
 
 const baseUrl = 'http://localhost:3030/users';
 
@@ -11,3 +11,5 @@ export async function login(email, password) {
 }
 
 export const register = (email, password) => post(`${baseUrl}/register`, { email, password });
+
+export const logout = () => get(`${baseUrl}/logout`);
