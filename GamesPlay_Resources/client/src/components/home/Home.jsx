@@ -9,8 +9,8 @@ export default function Home() {
     useEffect(() => {
         (async () => {
             const result = await getAll();
-            setLatestGames(result.reverse().slice(0, 3));
-        })();
+            const gamesArray = Object.values(result);
+            setLatestGames(gamesArray.reverse().slice(0, 3));        })();
     }, []);
     return (
         <section id="welcome-world">

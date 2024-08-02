@@ -3,17 +3,18 @@ import { login, register } from "../api/authApi";
 import { AuthContext } from "../api/contexts/authContext";
 
 export const useLogin = () => {
-
     const { changeAuthState } = useContext(AuthContext);
 
     const loginHandler = async (email, password) => {
-        const result = await login(email, password);
-        changeAuthState(result);
-        return result;
-
-
+        try {
+            const result = await login(email, password);
+            changeAuthState(result);
+            return result;
+        } catch (error) {
+            console.error('Login failed:', error);
+            throw error;
+        }
     };
-
 
     return loginHandler;
 };
@@ -22,11 +23,15 @@ export const useRegister = () => {
     const { changeAuthState } = useContext(AuthContext);
 
     const registerHandler = async (email, password) => {
-        const { password: _, authData } = await register(email, password);
-
-        changeAuthState(authData);
-        return authData;
+        try {
+            const result = await register(email, password);
+            changeAuthState(result);
+            return result;
+        } catch (error) {
+            console.error('Registration failed:', error);
+            throw error;
+        }
     };
-
+    
     return registerHandler;
 };
