@@ -8,7 +8,8 @@ async function requester(method, url, data) {
 
     const accessToken = localStorage.getItem('accessToken');
 
-    if (accessToken) {
+    // Do not add authorization header for login and registration endpoints
+    if (accessToken && !url.endsWith('/login') && !url.endsWith('/register')) {
         options.headers['X-Authorization'] = accessToken;
     }
 

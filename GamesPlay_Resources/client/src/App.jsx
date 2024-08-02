@@ -8,32 +8,14 @@ import Register from './components/register/Register';
 import GameCatalog from './components/game-catalog/GameCatalog';
 import GameCreate from './components/game-create/GameCreate';
 import GameDetails from './components/game-details/GameDetails';
-import { useState } from 'react';
-import { AuthContext } from './api/contexts/authContext';
+import { AuthContextProvider } from './api/contexts/authContext';
 
 
 
 function App() {
 
-    const [authState, setAuthState] = useState({});
-
-    const changeAuthState = (state) => {
-        localStorage.setItem('accessToken', state.accessToken); 
-        setAuthState(state);
-    };
-    
-
-    const contextData = {
-        userId: authState._id,
-        email: authState.email,
-        acessToken: authState.acessToken,
-        isAuthenticated: !!authState.email,
-        changeAuthState,
-
-    };
-
     return (
-        <AuthContext.Provider value={contextData}>
+        <AuthContextProvider >
 
             <div id="box">
                 <Header></Header>
@@ -52,7 +34,7 @@ function App() {
                 </main>
 
             </div>
-        </AuthContext.Provider>
+        </AuthContextProvider>
     );
 }
 

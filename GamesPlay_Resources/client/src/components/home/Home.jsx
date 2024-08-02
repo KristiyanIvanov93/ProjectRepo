@@ -10,7 +10,7 @@ export default function Home() {
         (async () => {
             const result = await getAll();
             const gamesArray = Object.values(result);
-            setLatestGames(gamesArray.reverse().slice(0, 3));        })();
+            setLatestGames(gamesArray.reverse().slice(0, 3));})();
     }, []);
     return (
         <section id="welcome-world">
