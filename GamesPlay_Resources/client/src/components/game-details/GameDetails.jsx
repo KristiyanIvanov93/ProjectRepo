@@ -14,7 +14,7 @@ export default function GameDetails() {
     const [comments, setComments] = useGetAllComments(gameId);
     const createComment = useCreateComment();
     const [game] = useGetOneGames(gameId);
-    const { isAuthenticated } = useAuthContext();
+    const { isAuthenticated, userId } = useAuthContext();
 
 
     const { changeHandler,
@@ -31,7 +31,7 @@ export default function GameDetails() {
         }
     });
 
-
+    const isOwner = userId === game._ownerId;
 
 
 
@@ -60,10 +60,13 @@ export default function GameDetails() {
                         )}
                     </ul>
                 </div>
-                <div className="buttons">
-                    <a href="#" className="button">Edit</a>
-                    <a href="#" className="button">Delete</a>
-                </div>
+                {isOwner &&
+                    (
+                        <div className="buttons">
+                            <a href="#" className="button">Edit</a>
+                            <a href="#" className="button">Delete</a>
+                        </div>
+                    )}
             </div>
             {isAuthenticated && (
                 <article className="create-comment">
