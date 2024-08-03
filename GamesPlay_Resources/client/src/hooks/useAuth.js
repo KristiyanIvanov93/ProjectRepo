@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { login, logout, register } from "../api/authApi";
+import { login, logout as apiLogout, register } from "../api/authApi";
 import { AuthContext, useAuthContext } from "../api/contexts/authContext";
+
 
 export const useLogin = () => {
     const { changeAuthState } = useContext(AuthContext);
@@ -41,8 +42,13 @@ export const useLogout = () => {
     const { logout: localLogout } = useAuthContext();
 
     const logoutHandler = async () => {
-        await logout();
-        localLogout();
+        try {
+            await apiLogout(); // Ensure this API call is correct
+        } catch (error) {
+            console.error('Error during logout:', error.message);
+        } finally {
+            localLogout(); // Ensure local state is updated after API call
+        }
     };
 
     return logoutHandler;

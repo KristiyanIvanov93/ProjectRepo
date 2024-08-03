@@ -35,7 +35,7 @@ export default function Login() {
                         value={values.email}
                         onChange={changeHandler}
                         name="email"
-                        placeholder="Sokka@gmail.com"
+                        placeholder="email@gmail.com"
                     />
                     <label htmlFor="login-pass">Password:</label>
                     <input
@@ -44,6 +44,8 @@ export default function Login() {
                         name="password"
                         value={values.password}
                         onChange={changeHandler}
+                        placeholder="password"
+
                     />
                     <input type="submit" className="btn submit" value="Login" />
                     <p className="field">
